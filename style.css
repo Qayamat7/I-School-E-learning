@@ -1,0 +1,110 @@
+/* Global Styles */
+/* Reset default browser margin and padding for consistency */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Navbar Styles */
+.navbar {
+  background-color: lightgrey; /* Set background color for the navbar */
+  overflow: hidden;
+  height: 60px; /* Define the height of the navbar */
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Align items and create space between them */
+}
+
+.navbar h1 {
+  font-weight: bold;
+  color: black; /* Text color for the site title */
+}
+
+.navbar .menu {
+  margin-right: 20px; /* Create space on the right of the menu */
+  display: flex;
+  align-items: center;
+}
+
+.navbar .menu i {
+  font-size: 24px; /* Set font size for menu icons */
+  color: black;
+  margin-left: 10px; /* Create space between the site title and icons */
+  cursor: pointer;
+}
+
+/* Profile Image Styles */
+/* Style for the profile image */
+.profile-image {
+  width: 36px; /* Define the width of the profile image */
+  height: 36px; /* Define the height of the profile image */
+  border-radius: 50%; /* Create a circular profile image */
+  object-fit: cover; /* Ensure the image covers the container */
+}
+
+/* Left Panel (Sidebar) Styles */
+.left-panel {
+  width: 200px; /* Set the width of the sidebar */
+  background-color: lightgrey; /* Background color for the sidebar */
+  color: black; /* Text color in the sidebar */
+  height: 100%;
+  position: fixed;
+  top: 60px; /* Align the top of the sidebar with the navbar */
+  left: 0;
+  overflow-y: auto; /* Enable vertical scrolling if content overflows */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center items horizontally */
+  justify-content: center; /* Center items vertically */
+  padding-top: 0%; /* Set padding for the top of the sidebar */
+}
+
+.left-panel a {
+  display: block;
+  padding: 30px 10px; /* Define padding for each menu item */
+  text-decoration: none;
+  color: black;
+  font-size: 150%; /* Set font size for menu items */
+  transition: background-color 0.3s; /* Add a smooth background color transition */
+  text-align: center; /* Center text within menu items */
+}
+
+.left-panel a:hover {
+  background-color: #555; /* Background color on hover */
+}
+
+/* Content Styles */
+.content {
+  margin-left: 200px; /* Create a margin to push content away from the sidebar */
+  padding: 30px; /* Define padding for content area */
+}
+
+/* Iframe Styles */
+iframe {
+  width: 100%;
+  height: 500px; /* Set a fixed height for iframes */
+  border: none; /* Remove iframe borders */
+}
+
+/* Dialog Styles */
+.dialog {
+  display: none;
+  position: fixed;
+  top: 50%; /* Center the dialog vertically */
+  left: 50%; /* Center the dialog horizontally */
+  transform: translate(-50%, -50%);
+  background-color: white; /* Background color for the dialog */
+  padding: 10px; /* Define padding for the dialog content */
+  border: 1px solid #ccc; /* Add a border */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add a shadow effect */
+  z-index: 999; /* Set a high z-index to ensure the dialog appears on top */
+}
+
+/* Close Button Styles */
+.close-btn {
+  position: absolute;
+  top: 10px; /* Position the close button at the top */
+  right: 10px; /* Position the close button at the right */
+  cursor: pointer; /* Change cursor on hover to indicate interactivity */
+}

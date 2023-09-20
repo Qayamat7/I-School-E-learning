@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subjects</title>
+    <style>
+        /* Add your CSS styles here */
+
+        /* Define the font for the entire page */
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        /* Styling for the tabs section */
+        .tabs {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        /* Styling for individual tabs */
+        .tab {
+            margin-right: 10px;
+            padding: 10px 20px;
+            cursor: pointer;
+            text-decoration: none;
+            color: #333;
+            position: relative;
+        }
+
+        /* Styling for the tab underline when active */
+        .tab::after {
+            content: '';
+            display: inline-block;
+            width: 0;
+            height: 2px;
+            background-color: transparent;
+            transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        /* Styling for the active tab underline */
+        .tab.active::after {
+            width: 100%;
+            background-color: #FFD700; /* Yellow color */
+        }
+
+        /* Styling for the main content section */
+        .content {
+            margin-top: 20px;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        /* Styling for individual subject cards */
+        .subject-card {
+            width: 100%;
+            max-width: 200px;
+            border: 1px solid green;
+            margin-bottom: 10px;
+            padding: 20px;
+            display: inline-block;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Styling for the upper part of subject cards */
+        .upper-card {
+            height: 80%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Styling for images inside subject cards */
+        .upper-card > img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        /* Styling for the circular image in subject cards */
+        .lower-card-dp {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        /* Styling for the lower part of subject cards */
+        .lower-card {
+            height: 30%;
+            width: 100%;
+            background-color: #ffffff;
+        }
+
+        /* Styling for the upper part of subject details */
+        .upper-subject {
+            height: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Styling for the faculty section */
+        .faculty {
+            display: flex;
+            height: 50%;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Styling for spacing between faculty elements */
+        .faculty > * {
+            padding: 0 5px;
+        }
+
+        /* Styling for the subject picture */
+        .subject-picture {
+            height: 50%;
+            width: 100%;
+            background-color: #555;
+            display: inline-block;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Styling for the image container */
+        .image-container {
+            width: 100%;
+            height: 100%;
+            background: url('https://www.shutterstock.com/image-vector/english-language-learning-concept-vector-illustration-1827529367') no-repeat center center;
+            background-size: cover;
+        }
+
+        /* Styling for the subject details text */
+        .subject-details {
+            width: 100%;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        /* Styling for the subject name */
+        .subject-name {
+            font-weight: bold;
+        }
+
+        /* Styling for the student count */
+        .student-count {
+            color: #777;
+        }
+
+        /* Styling for the student details section */
+        .student-details {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 5px;
+        }
+
+        /* Styling for the man sign icon */
+        .man-sign {
+            font-size: 20px;
+            color: #333;
+        }
+
+        /* Styling for the teacher name */
+        .teacher-name {
+            color: #555;
+        }
+
+        /* Styling for the class name */
+        .class {
+            margin-top: 5px;
+            font-size: 16px;
+            color: #555;
+        }
+
+        /* Styling for the "Create New Subject" button */
+        .create-button {
+            background-color: darkblue;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+
+        /* Styling for the dialog box */
+        .dialog-box {
+            display: none;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 20px;
+            width: 300px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Styling for text input fields in the dialog box */
+        .dialog-box input[type="text"] {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 5px;
+        }
+
+        /* Styling for buttons in the dialog box */
+        .dialog-box button {
+            background-color: darkblue;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        /* Styling for the close button in the dialog box */
+        .close-button {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 3px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        /* Media query for smaller screens */
+        @media (max-width: 768px) {
+            .content {
+                justify-content: center;
+            }
+
+            .subject-card {
+                margin-right: 10px;
+                margin-left: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Page Title -->
+    <h1>Subjects</h1>
+
+    <!-- Tabs for Active and Archive subjects -->
+    <div class="tabs">
+        <div class="tab active" data-tab="active" onclick="showContent('active')">Active</div>
+        <div class="tab" data-tab="archive" onclick="showContent('archive')">Archive</div>
+    </div>
+    <hr />
+
+    <!-- Content Section -->
+    <div class="content">
+        <!-- Active Subjects -->
+        <div id="active">
+            <!-- Individual Subject Cards -->
+            <div class='subject-card'>
+                <!-- Upper Card with Image -->
+                <div class='upper-card'>
+                    <img src='https://e0.pxfuel.com/wallpapers/674/124/desktop-wallpaper-english-language-learn-english.jpg' alt='english'/>
+                </div>
+                <!-- Lower Card with Subject Details -->
+                <div class='lower-card'>
+                    <!-- Upper Section of Subject Details -->
+                    <div class='subject-student'>
+                        <div class='upper-subject'> 
+                            <!-- Circular Image for Subject -->
+                            <img class='lower-card-dp' src='https://static.vecteezy.com/system/resources/thumbnails/002/219/582/small/illustration-of-book-icon-free-vector.jpg' alt='lower-dp'></img>
+                            <!-- Subject Name and Student Count -->
+                            <h5>1A English </h5>
+                            <p>20 students</p>
+                            <h3>Jonita Dedhiya</h3>    
+                        </div>
+                        <hr />
+                        <!-- Faculty Section (currently empty) -->
+                        <div class='faculty'>                
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Another Subject Card -->
+            <div class='subject-card'>
+                <!-- Upper Card with Image -->
+                <div class='upper-card'>
+                    <img src='https://cdn.pixabay.com/photo/2015/11/05/08/21/geometry-1023846_1280.jpg' alt='Maths'/>
+                </div>
+                <!-- Lower Card with Subject Details -->
+                <div class='lower-card'>
+                    <!-- Upper Section of Subject Details -->
+                    <div class='subject-student'>
+                        <div class='upper-subject'> 
+                            <!-- Circular Image for Subject -->
+                            <img class='lower-card-dp' src='https://static.vecteezy.com/system/resources/thumbnails/002/219/582/small/illustration-of-book-icon-free-vector.jpg' alt='lower-dp'></img>
+                            <!-- Subject Name and Student Count -->
+                            <h5>1B Maths </h5>
+                            <p>25 students</p> 
+                            <h3>Jonita Dedhiya</h3>  
+                        </div>
+                        <hr />
+                        <!-- Faculty Section (currently empty) -->
+                        <div class='faculty'>                
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Archive Subjects (currently empty) -->
+        <div id="archive" style="display: none;">
+            <!-- Add content for the Archive tab if needed -->
+        </div>
+    </div>
+
+    <!-- Create New Subject button -->
+    <button class="create-button" onclick="openDialog()">Create New Subject</button>
+
+    <!-- Dialog box for creating a new subject -->
+    <div class="dialog-box" id="dialogBox">
+        <!-- Close button for the dialog -->
+        <button class="close-button" onclick="closeDialog()">X</button>
+        <!-- Title for the dialog box -->
+        <h2>Create New Subject</h2>
+        <!-- Input fields for subject information -->
+        <input type="text" id="subjectName" placeholder="Subject Name">
+        <input type="text" id="teacherName" placeholder="Teacher Name">
+        <input type="text" id="studentCount" placeholder="Student Count">
+        <input type="text" id="class" placeholder="Class">
+        <!-- Submit button for creating a new subject -->
+        <button onclick="addNewSubject()">Submit</button>
+    </div>
+
+    <!-- JavaScript functions for interactivity -->
+    <script>
+        // Function to toggle content between Active and Archive tabs
+        function showContent(tabName) {
+            const contentSections = document.querySelectorAll('.content > div');
+            const tabs = document.querySelectorAll('.tab');
+
+            contentSections.forEach(section => section.style.display = 'none');
+
+            tabs.forEach(tab => {
+                const tabContentId = tab.getAttribute('data-tab');
+                const tabContent = document.getElementById(tabContentId);
+                
+                if (tabContentId === tabName) {
+                    tab.classList.add('active');
+                    tabContent.style.display = 'block';
+                } else {
+                    tab.classList.remove('active');
+                }
+            });
+        }
+
+        // Function to open the dialog box for creating a new subject
+        function openDialog() {
+            document.getElementById('dialogBox').style.display = 'block';
+        }
+
+        // Function to close the dialog box
+        function closeDialog() {
+            document.getElementById('dialogBox').style.display = 'none';
+        }
+
+        // Function to add a new subject card
+        function addNewSubject() {
+            const subjectName = document.getElementById('subjectName').value;
+            const teacherName = document.getElementById('teacherName').value;
+            const studentCount = document.getElementById('studentCount').value;
+            const className = document.getElementById('class').value;
+
+            // Create a new subject card
+            const newSubject = document.createElement('div');
+            newSubject.className = 'subject-card';
+            newSubject.innerHTML = `
+                <div class='upper-card'>
+                    <img src='https://cdn.pixabay.com/photo/2015/11/05/08/21/geometry-1023846_1280.jpg' alt='${subjectName}'/>
+                </div>
+                <div class='lower-card'>
+                    <div class='subject-student'>
+                        <div class='upper-subject'> 
+                            <img class='lower-card-dp' src='https://static.vecteezy.com/system/resources/thumbnails/002/219/582/small/illustration-of-book-icon-free-vector.jpg' alt='lower-dp'></img>
+                            <h5>${className} ${subjectName}</h5>
+                            <p>${studentCount} students</p>   
+                        </div>
+                        <hr />
+                        <div class='faculty'>                
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Append the new subject card to the active tab
+            document.getElementById('active').appendChild(newSubject);
+
+            // Close the dialog box
+            document.getElementById('dialogBox').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

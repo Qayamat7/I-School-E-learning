@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Metadata and Title -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>I-School E-learning</title>
+
+    <!-- Link to Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+
+    <!-- Link to the external CSS file -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Navbar Section -->
+    <div class="navbar">
+      <!-- Site Title -->
+      <h1>E-learning</h1>
+      <div class="menu">
+        <!-- Profile icon with an image (clickable) -->
+        <img
+          class="profile-image"
+          src="Ritesh.png"
+          alt="Profile Image"
+          onclick="openProfileDialog()"
+        />
+        <!-- Three dots icon (menu, not implemented in this example) -->
+        <i class="fas fa-ellipsis-h"></i>
+      </div>
+    </div>
+
+    <!-- Left Panel (Menu) -->
+    <div class="left-panel">
+      <!-- Menu Items with Icons and Links -->
+      <a class="menu-item" href="#">
+        <i class="fas fa-home"></i>
+        Home
+      </a>
+      <a class="menu-item" href="subject.html" target="iframe_content">
+        <i class="fas fa-book"></i>
+        Subjects
+      </a>
+      <a class="menu-item" href="#">
+        <i class="fas fa-calendar-alt"></i>
+        Schedule
+      </a>
+      <a class="menu-item" href="#">
+        <i class="fas fa-file"></i>
+        Classic Logs
+      </a>
+      <a class="menu-item" href="#">
+        <i class="fas fa-running"></i>
+        Activities
+      </a>
+      <a class="menu-item" href="#">
+        <i class="fas fa-graduation-cap"></i>
+        Gradebook
+      </a>
+      <a class="menu-item" href="#">
+        <i class="fas fa-users"></i>
+        Communities
+      </a>
+    </div>
+
+    <!-- Content Section -->
+    <div class="content">
+      <!-- Iframe for displaying content -->
+      <iframe src="Subject.html" name="subject-frame"></iframe>
+    </div>
+
+    <!-- Profile dialog -->
+    <div class="dialog" id="profile-dialog">
+      <!-- Close button for the dialog -->
+      <span class="close-btn" onclick="closeProfileDialog()">&times;</span>
+      <!-- Profile Image -->
+      <img src="Ritesh.png" alt="Profile Image" width="100" height="100" />
+      <!-- User Information -->
+      <p>User Name: Ritesh</p>
+      <p>User Role: UI Developer</p>
+      <p>Employee ID: 2192727</p>
+    </div>
+
+    <!-- JavaScript to handle the profile dialog -->
+    <script>
+      // Function to open the profile dialog
+      function openProfileDialog() {
+        var dialog = document.getElementById("profile-dialog");
+        dialog.style.display = "block";
+      }
+
+      // Function to close the profile dialog
+      function closeProfileDialog() {
+        var dialog = document.getElementById("profile-dialog");
+        dialog.style.display = "none";
+      }
+    </script>
+  </body>
+</html>
